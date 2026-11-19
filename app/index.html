@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solmar Cover Studio — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">S</span>
+    <div>
+      <h1>Solmar Cover Studio</h1>
+      <p>Turn your photo + caption into GTA-style cover art. 100% offline — photos never leave your machine.</p>
+    </div>
+  </div>
+  <span class="badge">SOLMAR BAY</span>
+</header>
+
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h2>1 · Layout</h2>
+    <div id="layouts" class="pick-row" role="group" aria-label="Layout presets"></div>
+
+    <h2>2 · Your photos</h2>
+    <p class="hint">Drop a photo onto the preview, or pick a file per slot. Samples are free to use.</p>
+    <div class="slots">
+      <label class="slot">Photo slot 1 <input id="slot0" type="file" accept="image/*"></label>
+      <label class="slot">Photo slot 2 <input id="slot1" type="file" accept="image/*"></label>
+      <label class="slot">Photo slot 3 <input id="slot2" type="file" accept="image/*"></label>
+    </div>
+    <div class="samples">
+      <button type="button" data-sample="pier" data-slot="0">Use sample: Pier</button>
+      <button type="button" data-sample="boulevard" data-slot="1">Use sample: Boulevard</button>
+    </div>
+
+    <h2>3 · Panels</h2>
+    <p class="hint">Zoom, pan or flip each panel — or drag the photo right on the preview.</p>
+    <div id="panels"></div>
+
+    <h2>4 · Caption</h2>
+    <label class="field">Title
+      <input id="title" type="text" maxlength="32" value="SOLMAR NIGHTS">
+    </label>
+    <label class="field">Subtitle
+      <input id="subtitle" type="text" maxlength="60" value="One city. One night. No rules.">
+    </label>
+    <label class="field">Tagline
+      <input id="tagline" type="text" maxlength="60" value="Solmar Bay • Summer 2026">
+    </label>
+    <label class="field">Title size
+      <input id="titleSize" type="range" min="0.6" max="1.4" step="0.05" value="1">
+    </label>
+    <label class="field">Title position
+      <input id="titlePos" type="range" min="0.2" max="0.92" step="0.01" value="0.78">
+    </label>
+
+    <h2>5 · Colour grade</h2>
+    <div id="grades" class="pick-row" role="group" aria-label="Colour grades"></div>
+
+    <h2>6 · Export PNG</h2>
+    <div class="exports">
+      <button id="export-1080x1080" type="button" class="export">Square · 1080 × 1080</button>
+      <button id="export-1080x1350" type="button" class="export">Portrait · 1080 × 1350</button>
+      <button id="export-1920x1080" type="button" class="export">Wide · 1920 × 1080</button>
+    </div>
+    <p id="status" role="status"></p>
+  </section>
+
+  <section id="stage" class="stage" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <p class="stage-hint">Live preview — drag a panel to pan its photo</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Solmar Cover Studio — original art drawn in code. No Rockstar logo, artwork or fonts. Made for the make.fun bounty “Make GTA 6 Cover Art”.</p>
+</footer>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
